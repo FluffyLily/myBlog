@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberns">
+
+    <!-- 회원가입 -->
+    <insert id="join" parameterType="member">
+        insert into member(id, pw, name, tel, email, photo, reg_date, quit)
+        values (#{id}, #{pw}, #{name},
+                #{tel},
+                #{email},
+                #{photo, jdbcType=VARCHAR},
+                now(), 'n')
+    </insert>
+
+    <!-- 회원정보 확인 -->
+    <select id="getMember" parameterType="String" resultType="member">
+        select * from member where id=#{id}
+    </select>
+
+    <!-- 이메일 중복 확인 -->
+    <select id="checkEmail" parameterType="String" resultType="member">
+        select * from member where email=#{email}
+    </select>
+
+    <!-- 비밀번호 확인 -->
+    <select id="pwFind" parameterType="member" resultType="member">
+        select * from member where id=#{id} and name=#{name}
+    </select>
+
+    <!-- 회원정보 수정 -->
+    <update id="update_user_info" parameterType="member">
+        update member set pw = #{pw}, name = #{name}, tel = #{tel}, email = #{email},
+                          sns = #{sns}, photo = #{photo, jdbcType=VARCHAR}
+        where id = #{id}
+    </update>
+
+</mapper>

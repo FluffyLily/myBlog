@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardns">
+
+    <!-- 포스트 작성 -->
+    <insert id="write" parameterType="board">
+        insert into board (
+                           title,
+                           content,
+                           photo,
+                           reg_date,
+                           id,
+                           category,
+                           tag)
+        values (#{title},
+                #{content, jdbcType=VARCHAR},
+                #{photo, jdbcType=VARCHAR},
+                now(),
+                'renee',
+                #{category},
+                #{tag, jdbcType=VARCHAR})
+    </insert>
+
+    <!-- 포스트 수정 -->
+    <update id="modify" parameterType="board">
+        update board set title = #{title},
+                         content = #{content, jdbcType=VARCHAR},
+                         photo = #{photo, jdbcType=VARCHAR},
+                         id = 'renee',
+                         category = #{category, jdbcType=VARCHAR},
+                         up_date = now(),
+                         tag = #{tag, jdbcType=VARCHAR}
+        where bno = #{bno}
+    </update>
+
+    <!-- 포스트 삭제 -->
+    <delete id="delete" parameterType="int">
+        delete from board where bno = #{bno}
+    </delete>
+
+    <!-- 포스트 상세 페이지 -->
+    <select id="getDetail" parameterType="int" resultType="board">
+        select * from board where bno = #{bno}
+    </select>
+
+    <!-- 포스트 목록 -->
+    <select id="postList" parameterType="int" resultType="board">
+        select * from board order by reg_date desc, bno desc LIMIT #{offset}, 6
+    </select>
+
+    <!-- 포스트 개수 -->
+    <select id="getCount" resultType="int">
+        select count(bno) from board
+    </select>
+
+    <!-- 카테고리 -->
+    <select id="categoryList" parameterType="String" resultType="board">
+        select * from board where category = #{category}
+        order by reg_date desc, bno desc
+    </select>
+
+    <!-- 카테고리별 포스트 개수 -->
+    <select id="categoryCount" resultType="int" parameterType="String">
+        select count(bno) from board where category = #{category}
+    </select>
+
+    <!-- 키워드 검색 하기 -->
+    <select id="searchKeyword" parameterType="SearchCondition" resultType="board">
+        select * from board
+        where true
+        and title like concat('%', #{keyword}, '%')
+        or content like concat('%', #{keyword}, '%')
+        order by reg_date desc, bno desc
+        LIMIT #{offset}, #{limit}
+    </select>
+
+    <!-- 키워드 검색 결과 개수 -->
+    <select id="searchResultCnt" parameterType="SearchCondition" resultType="int">
+        select count(*) from board
+        where true
+        and title like concat('%', #{keyword}, '%')
+        or content like concat('%', #{keyword}, '%')
+    </select>
+
+</mapper>

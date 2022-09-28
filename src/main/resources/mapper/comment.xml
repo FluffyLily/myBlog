@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="commentns">
+
+    <!-- 댓글 쓰기 -->
+    <insert id="insertComment" parameterType="comment">
+        insert into comment
+        (rno, commenter, content, reg_date, email, bno)
+        values (#{rno}, #{commenter}, #{content}, now(), #{email}, #{bno})
+    </insert>
+
+    <!-- 댓글 불러오기 -->
+    <select id="queryComment" parameterType="int" resultType="comment">
+        select * from comment where bno = #{bno}
+        order by rno desc
+    </select>
+
+    <!-- 댓글 삭제하기 -->
+    <delete id="deleteComment" parameterType="int">
+        delete from comment where rno = #{rno}
+    </delete>
+
+    <!-- 댓글 개수 카운팅 -->
+    <select id="countComment" resultType="int">
+        select count(rno) from comment where bno = #{bno}
+    </select>
+</mapper>
