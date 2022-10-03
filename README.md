@@ -1,2 +1,3 @@
-![블로그ERD01 drawio](https://user-images.githubusercontent.com/103009000/193524279-48c2ab61-7c03-4faf-ac20-8975a2a3ba77.png)
+![블로그ERD01 drawio](https://user-images.githubusercontent.com/103009000/193526910-a713c277-b23e-4cdc-9a91-23ba201bccc3.png)
+
 # myBlog
