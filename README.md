@@ -1,3 +1,2 @@
-# myBlog
-![블로그ERD01](https://user-images.githubusercontent.com/103009000/193528512-bf35866c-e12a-431b-a07d-76bdfb3a7ed1.jpg)
-
+# myBlog!
+[블로그ERD01](https://user-images.githubusercontent.com/103009000/193528923-e1e5eece-e720-4710-9304-f6623a5d1a8c.png)
