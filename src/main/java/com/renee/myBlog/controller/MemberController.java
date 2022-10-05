@@ -90,10 +90,10 @@ public class MemberController {
 
         String charSet = "utf-8";
         String hostSMTP = "smtp.naver.com";
-        String hostSMTPid = "abcd@naver.com";
-        String hostSMTPpwd = "abcd1234";
+        String hostSMTPid = "abc@naver.com";
+        String hostSMTPpwd = "abc1234";
 
-        String fromEmail = "abcd@naver.com";
+        String fromEmail = "abc@naver.com";
         String fromName = "Renee's Blog";
         String subject = "회원 가입 이메일 인증번호 입니다.";
 
@@ -170,10 +170,10 @@ public class MemberController {
         } else {
             String charSet = "utf-8";
             String hostSMTP = "smtp.naver.com";
-            String hostSMTPid = "abcd@naver.com";
-            String hostSMTPpwd = "abcd1234";
+            String hostSMTPid = "abc@naver.com";
+            String hostSMTPpwd = "abc1234";
 
-            String fromEmail = "abcd@naver.com";
+            String fromEmail = "abc@naver.com";
             String fromName = "Renee's Blog";
             String subject = "비밀번호 찾기 안내 이메일입니다.";
             String email = member.getEmail();
