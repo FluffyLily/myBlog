@@ -32,3 +32,4 @@ build/
 ### VS Code ###
 .vscode/
 !/src/main/java/com/renee/myBlog/controller/MemberController.java
+!/src/main/resources/application.properties
